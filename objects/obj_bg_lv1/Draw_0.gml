@@ -6,10 +6,10 @@ var cam_w = camera_get_view_width(cam);
 var sw = sprite_get_width(sprite_index) * scale_x;
 
 // offset basato sulla camera
-var offset = cam_x mod sw;
+var offset = cam_x - floor(cam_x / sw) * sw;
 
 // quante copie servono
-var count = ceil(cam_w / sw) + 2;
+var count = ceil(cam_w / sw) + 3;
 
 // disegno
 for (var i = 0; i < count; i++) {

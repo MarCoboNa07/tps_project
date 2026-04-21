@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_desk_block",
+  "%Name":"obj_book_block_2",
   "eventList":[],
   "managed":true,
-  "name":"obj_desk_block",
+  "name":"obj_book_block_2",
   "overriddenProperties":[],
   "parent":{
     "name":"obj_blocks",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_desk_block",
-    "path":"sprites/spr_desk_block/spr_desk_block.yy",
+    "name":"spr_book_block_2",
+    "path":"sprites/spr_book_block_2/spr_book_block_2.yy",
   },
   "spriteMaskId":null,
   "visible":true,
