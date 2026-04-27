@@ -18,13 +18,13 @@ x_speed = move_dir * move_speed // calcola la velocità
 
 // collisioni
 var _sub_pixel = 0.5
-if (place_meeting(x + x_speed, y, obj_desk_block) 
+if (place_meeting(x + x_speed, y, obj_desk_block_1) 
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
 	|| place_meeting(x + x_speed, y, obj_book_block_3)) { // verifica se il player incontra un blocco
 	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(x_speed)
-	while (!place_meeting(x + _pixel_check, y, obj_desk_block) 
+	while (!place_meeting(x + _pixel_check, y, obj_desk_block_1) 
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_1)
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_2)
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
@@ -50,13 +50,13 @@ if (y_speed > term_vel) {
 }
 
 // collisioni
-if (place_meeting(x, y + y_speed, obj_desk_block) 
+if (place_meeting(x, y + y_speed, obj_desk_block_1) 
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
 	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
 	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(y_speed)
-	while (!place_meeting(x, y + _pixel_check, obj_desk_block) 
+	while (!place_meeting(x, y + _pixel_check, obj_desk_block_1) 
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
@@ -67,7 +67,7 @@ if (place_meeting(x, y + y_speed, obj_desk_block)
 }
 
 // verifica se il player è sopra un blocco
-if (y_speed >= 0 && (place_meeting(x, y + 1, obj_desk_block) 
+if (y_speed >= 0 && (place_meeting(x, y + 1, obj_desk_block_1) 
 	|| place_meeting(x, y + 1, obj_book_block_1)
 	|| place_meeting(x, y + 1, obj_book_block_2)
 	|| place_meeting(x, y + 1, obj_book_block_3))) {
