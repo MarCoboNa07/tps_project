@@ -4,66 +4,76 @@ if (obj_pause_controller.paused) {
 }
 
 // input
-get_controls()
+get_controls();
+
+// blocca movimento se subisce danno
+if (is_damaged) {
+	move_dir = 0;
+	x_speed = 0;
+}
 
 // movimento sull'asse x
-move_dir = right_key - left_key // direzione
+move_dir = right_key - left_key; // direzione
 
 // verifica se il personaggio si sta muovento
 if (move_dir != 0) {
-	face = move_dir // cambia la direzione in cui guarda il personaggio
+	face = move_dir; // cambia la direzione in cui guarda il personaggio
 }
 
-x_speed = move_dir * move_speed // calcola la velocità
+x_speed = move_dir * move_speed; // calcola la velocità
 
-// collisioni
+// collisione blocchi
 var _sub_pixel = 0.5
 if (place_meeting(x + x_speed, y, obj_desk_block_1) 
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
-	|| place_meeting(x + x_speed, y, obj_book_block_3)) { // verifica se il player incontra un blocco
+	|| place_meeting(x + x_speed, y, obj_book_block_3)
+	|| place_meeting(x + x_speed, y, obj_enemy_type_1)) { // verifica se il player incontra un blocco
 	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(x_speed)
 	while (!place_meeting(x + _pixel_check, y, obj_desk_block_1) 
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_1)
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_2)
-		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
-		x += _pixel_check
+		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)
+		&& !place_meeting(x + _pixel_check, y, obj_enemy_type_1)) {
+		x += _pixel_check;
 	}
 	
-	x_speed = 0 // imposta la velocità a 0 per far collidere il player con il blocco
+	x_speed = 0; // imposta la velocità a 0 per far collidere il player con il blocco
 }
 
-x += x_speed // movimento
+x += x_speed; // movimento
 
 // movimento sull'asse y
-y_speed += grav // gravità
+y_speed += grav; // gravità
 
 // salto
 if (jump_key_pressed && on_ground) {
-	y_speed = jump_speed
+	y_speed = jump_speed;
 }
 
 // regola la velocità di caduta se è troppo alta
 if (y_speed > term_vel) {
-	y_speed = term_vel
+	y_speed = term_vel;
 }
 
-// collisioni
+// collisioni blocchi
 if (place_meeting(x, y + y_speed, obj_desk_block_1) 
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
-	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
+	|| place_meeting(x, y + y_speed, obj_book_block_3)
+	|| place_meeting(x, y + y_speed, obj_enemy_type_1)) {
 	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(y_speed)
 	while (!place_meeting(x, y + _pixel_check, obj_desk_block_1) 
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
-		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
-		y += _pixel_check
+		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)
+		&& !place_meeting(x, y + _pixel_check, obj_enemy_type_1)) {
+		y += _pixel_check;
 	}
 	
-	y_speed = 0 // imposta la velocità a 0 per far collidere il player con il blocco
+	y_speed = 0; // imposta la velocità a 0 per far collidere il player con il blocco
 }
 
 // verifica se il player è sopra un blocco
@@ -71,37 +81,76 @@ if (y_speed >= 0 && (place_meeting(x, y + 1, obj_desk_block_1)
 	|| place_meeting(x, y + 1, obj_book_block_1)
 	|| place_meeting(x, y + 1, obj_book_block_2)
 	|| place_meeting(x, y + 1, obj_book_block_3))) {
-	on_ground = true
+	on_ground = true;
 } else {
-	on_ground = false
+	on_ground = false;
 }
 
-y += y_speed // movimento
+y += y_speed; // movimento
+
+// collisione nemico
+if (place_meeting(x, y, obj_enemy_type_1)) {
+    if (!invulnerable) {
+        n_lives -= 1;
+        invulnerable = true;
+        invulnerable_time = room_speed * 2;
+
+		is_damaged = true;
+		damage_time = room_speed * 0.5;
+
+        // morte
+        if (n_lives <= 0) {
+            sprite_index = death_spr;
+			room_goto(rm_menu);
+        }
+    }
+}
+
+// gestione invulnerabilità
+if (invulnerable) {
+    invulnerable_time--;
+
+    if (invulnerable_time <= 0) {
+        invulnerable = false;
+    }
+}
+
+// gestione stato danno
+if (is_damaged) {
+    damage_time--;
+
+    if (damage_time <= 0) {
+        is_damaged = false;
+    }
+}
 
 // animazione sprite
-if (!on_ground) { // salto
-	sprite_index = jump_spr
-	image_speed = 0 // imposta la velocità di cambio frame
+if (is_damaged) {
+	sprite_index = damage_spr;
+	image_speed = 0;
+} else if (!on_ground) { // salto
+	sprite_index = jump_spr;
+	image_speed = 0; // imposta la velocità di cambio frame
 	
 	// cambia frame in base alla posizione
 	if (y_speed < -4) { // salita veloce
-        image_index = 0
+        image_index = 0;
     } else if (y_speed < -1) { // salita lenta
-        image_index = 1
+        image_index = 1;
     } else if (y_speed < 4) { // inizio caduta
-        image_index = 2
+        image_index = 2;
     } else { // caduta veloce
-        image_index = 3
+        image_index = 3;
     }
 } else if (left_mouse) { // attacco
-	sprite_index = attack_spr
-	image_speed = 1
+	sprite_index = attack_spr;
+	image_speed = 1;
 } else if abs(x_speed) > 0 { // camminata
-	sprite_index = walk_spr 
-	image_speed = 1 // imposta la velocità di cambio frame
+	sprite_index = walk_spr; 
+	image_speed = 1; // imposta la velocità di cambio frame
 } else { // fermo
-	sprite_index = idle_spr
-	image_speed = 1 // imposta la velocità di cambio frame
+	sprite_index = idle_spr;
+	image_speed = 1; // imposta la velocità di cambio frame
 }
 
-mask_index = mask_spr // imposta la maschera di collisione dello spirte idle
+mask_index = mask_spr; // imposta la maschera di collisione dello spirte idle

@@ -1,7 +1,7 @@
 var _alpha = image_alpha;
 
 // effetto lampeggio
-if (invulnerable) {
+if (is_dead) {
     if (floor(current_time / 100) mod 2 == 0) {
         _alpha = 0.3;
     }
