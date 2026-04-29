@@ -1,0 +1,64 @@
+// movimento orizzontale automatico
+x_speed = move_dir * move_speed
+
+var _sub_pixel = 0.5
+
+// collisioni orizzontali
+if (place_meeting(x + x_speed, y, obj_desk_block_1) 
+|| place_meeting(x + x_speed, y, obj_book_block_1)
+|| place_meeting(x + x_speed, y, obj_book_block_2)
+|| place_meeting(x + x_speed, y, obj_book_block_3)) {
+
+    var _pixel_check = _sub_pixel * sign(x_speed)
+    
+    while (!place_meeting(x + _pixel_check, y, obj_desk_block_1)
+    && !place_meeting(x + _pixel_check, y, obj_book_block_1)
+    && !place_meeting(x + _pixel_check, y, obj_book_block_2)
+    && !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
+        x += _pixel_check
+    }
+
+    // cambia direzione
+    move_dir *= -1
+}
+
+x_speed = move_dir * move_speed
+face = move_dir
+x += x_speed
+
+// gravità
+y_speed += grav
+
+if (y_speed > term_vel) {
+    y_speed = term_vel
+}
+
+// collisioni verticali
+if (place_meeting(x, y + y_speed, obj_desk_block_1) 
+|| place_meeting(x, y + y_speed, obj_book_block_1)
+|| place_meeting(x, y + y_speed, obj_book_block_2)
+|| place_meeting(x, y + y_speed, obj_book_block_3)) {
+    var _pixel_check = _sub_pixel * sign(y_speed)
+    
+    while (!place_meeting(x, y + _pixel_check, obj_desk_block_1)
+    && !place_meeting(x, y + _pixel_check, obj_book_block_1)
+    && !place_meeting(x, y + _pixel_check, obj_book_block_2)
+    && !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
+        y += _pixel_check
+    }
+	
+    y_speed = 0
+}
+
+y += y_speed
+
+// controllo se è a terra
+if (y_speed >= 0 && (
+place_meeting(x, y + 1, obj_desk_block_1) 
+|| place_meeting(x, y + 1, obj_book_block_1)
+|| place_meeting(x, y + 1, obj_book_block_2)
+|| place_meeting(x, y + 1, obj_book_block_3))) {
+    on_ground = true
+} else {
+    on_ground = false
+}
