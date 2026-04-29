@@ -6,7 +6,7 @@ var cam_w = camera_get_view_width(cam);
 var sw = sprite_get_width(sprite_index) * scale_x;
 
 // offset basato sulla camera
-var offset = cam_x - floor(cam_x / sw) * sw;
+var offset = (cam_x * parallax) - floor((cam_x * parallax) / sw) * sw;
 
 // quante copie servono
 var count = ceil(cam_w / sw) + 3;
