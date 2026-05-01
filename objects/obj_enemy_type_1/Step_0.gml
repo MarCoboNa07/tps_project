@@ -1,5 +1,20 @@
-// movimento orizzontale automatico
+// movimento sull'asse x automatico
 x_speed = move_dir * move_speed;
+
+// gestine morte
+if (is_dead) {
+    x_speed = 0;
+    y_speed = 0;
+	move_speed = 0;
+    image_speed = 0;
+	
+	death_timer--;
+
+    if (death_timer <= 0) {
+        instance_destroy();
+    }
+    exit;
+}
 
 var _sub_pixel = 0.5;
 
@@ -60,14 +75,4 @@ place_meeting(x, y + 1, obj_desk_block_1)
     on_ground = true;
 } else {
     on_ground = false;
-}
-
-// gestione morte
-if (is_dead) {
-    death_timer--;
-
-    if (death_timer <= 0) {
-        instance_destroy();
-    }
-    exit;
 }

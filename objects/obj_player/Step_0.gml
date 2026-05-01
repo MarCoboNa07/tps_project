@@ -27,15 +27,13 @@ var _sub_pixel = 0.5
 if (place_meeting(x + x_speed, y, obj_desk_block_1) 
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
-	|| place_meeting(x + x_speed, y, obj_book_block_3)
-	|| place_meeting(x + x_speed, y, obj_enemy_type_1)) { // verifica se il player incontra un blocco
+	|| place_meeting(x + x_speed, y, obj_book_block_3)) { // verifica se il player incontra un blocco
 	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(x_speed)
 	while (!place_meeting(x + _pixel_check, y, obj_desk_block_1) 
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_1)
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_2)
-		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)
-		&& !place_meeting(x + _pixel_check, y, obj_enemy_type_1)) {
+		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
 		x += _pixel_check;
 	}
 	
@@ -61,15 +59,13 @@ if (y_speed > term_vel) {
 if (place_meeting(x, y + y_speed, obj_desk_block_1) 
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
-	|| place_meeting(x, y + y_speed, obj_book_block_3)
-	|| place_meeting(x, y + y_speed, obj_enemy_type_1)) {
+	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
 	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(y_speed)
 	while (!place_meeting(x, y + _pixel_check, obj_desk_block_1) 
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
-		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)
-		&& !place_meeting(x, y + _pixel_check, obj_enemy_type_1)) {
+		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
 		y += _pixel_check;
 	}
 	
@@ -89,8 +85,15 @@ if (y_speed >= 0 && (place_meeting(x, y + 1, obj_desk_block_1)
 y += y_speed; // movimento
 
 // collisione nemico
-if (place_meeting(x, y, obj_enemy_type_1)) {
-    if (!invulnerable) {
+var _enemy = instance_place(x, y + 1, obj_enemy_type_1);
+
+if (_enemy != noone) {
+	if (y_speed > 0 && y < _enemy.y) {
+		_enemy.is_dead = true;
+		_enemy.death_timer = room_speed * 0.5;
+		
+		y_speed = jump_speed * 0.7;
+	} else if (!invulnerable) {
         n_lives -= 1;
         invulnerable = true;
         invulnerable_time = room_speed * 2;
