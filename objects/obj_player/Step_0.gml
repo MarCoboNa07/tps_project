@@ -88,12 +88,12 @@ y += y_speed; // movimento
 var _enemy = instance_place(x, y + 1, obj_enemy_type_1);
 
 if (_enemy != noone) {
-	if (y_speed > 0 && y < _enemy.y) {
+	if (y_speed > 0 && y < _enemy.y) { // kill nemico
 		_enemy.is_dead = true;
 		_enemy.death_timer = room_speed * 0.5;
 		
 		y_speed = jump_speed * 0.7;
-	} else if (!invulnerable) {
+	} else if (!invulnerable) { // subisce danno
         n_lives -= 1;
         invulnerable = true;
         invulnerable_time = room_speed * 2;
@@ -108,6 +108,27 @@ if (_enemy != noone) {
         }
     }
 }
+
+// collisione boss
+var _boss = instance_place(x, y + 1, obj_boss);
+
+if (_boss != noone) {
+	if (!invulnerable) { // subisce danno
+		n_lives -= 1;
+        invulnerable = true;
+        invulnerable_time = room_speed * 2;
+
+		is_damaged = true;
+		damage_time = room_speed * 0.5;
+
+        // morte
+        if (n_lives <= 0) {
+            sprite_index = death_spr;
+			room_goto(rm_menu);
+        }
+	}
+}
+
 
 // gestione invulnerabilità
 if (invulnerable) {
@@ -133,7 +154,7 @@ if (is_damaged) {
 	image_speed = 0;
 } else if (!on_ground) { // salto
 	sprite_index = jump_spr;
-	image_speed = 0; // imposta la velocità di cambio frame
+	image_speed = 0;
 	
 	// cambia frame in base alla posizione
 	if (y_speed < -4) { // salita veloce
@@ -150,10 +171,10 @@ if (is_damaged) {
 	image_speed = 1;
 } else if abs(x_speed) > 0 { // camminata
 	sprite_index = walk_spr; 
-	image_speed = 1; // imposta la velocità di cambio frame
+	image_speed = 1;
 } else { // fermo
 	sprite_index = idle_spr;
-	image_speed = 1; // imposta la velocità di cambio frame
+	image_speed = 1;
 }
 
 mask_index = mask_spr; // imposta la maschera di collisione dello spirte idle

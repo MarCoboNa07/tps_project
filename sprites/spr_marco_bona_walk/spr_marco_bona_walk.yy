@@ -32,7 +32,7 @@
   "origin":7,
   "parent":{
     "name":"spr_player_bona",
-    "path":"folders/Sprites/spr_player_bona.yy",
+    "path":"folders/Sprites/spr_players/spr_player_bona.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -28,7 +28,7 @@
   "origin":7,
   "parent":{
     "name":"spr_player_capo_maurys",
-    "path":"folders/Sprites/spr_player_capo_maurys.yy",
+    "path":"folders/Sprites/spr_players/spr_player_capo_maurys.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
