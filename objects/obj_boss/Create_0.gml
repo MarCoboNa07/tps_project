@@ -45,6 +45,7 @@ if (room == rm_level_1) {
     damage_spr = spr_gigante_damage;
     death_spr  = spr_gigante_death;
 }
+state = "idle"; // idle, walk, damage, death
 
 // movimento
 move_speed = 1
@@ -61,6 +62,9 @@ face = 1
 // danno
 is_damaged = false;
 damage_time = 0;
+hp = 10;
+hit_cooldown = 0;
+hit_invulnerable = false;
 
 // morte
 is_dead = false;

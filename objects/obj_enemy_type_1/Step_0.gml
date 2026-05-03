@@ -1,3 +1,4 @@
+// uccisione
 function die() {
 	is_dead = true;
     death_timer = room_speed * 0.5;
@@ -63,9 +64,9 @@ if (place_meeting(x, y + y_speed, obj_desk_block_1)
     var _pixel_check = _sub_pixel * sign(y_speed);
     
     while (!place_meeting(x, y + _pixel_check, obj_desk_block_1)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_1)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_2)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
+	&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
+	&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
+	&& !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
         y += _pixel_check;
     }
 

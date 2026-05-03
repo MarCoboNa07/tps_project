@@ -1,5 +1,69 @@
+// prende danno
+function take_damage(_amount) {
+    if (hit_invulnerable) exit;
+
+    hp -= _amount;
+    hit_invulnerable = true;
+    hit_cooldown = room_speed;
+
+    is_damaged = true;
+    damage_time = room_speed * 0.5;
+	image_index = 0;
+
+    if (hp <= 0) {
+        die();
+    }
+}
+
+// muore
+function die() {
+    is_dead = true;
+    death_timer = room_speed * 1;
+    move_speed = 0;
+    x_speed = 0;
+    y_speed = 0;
+}
+
 // movimento sull'asse x automatico
 x_speed = move_dir * move_speed;
+
+// gestione stato
+if (is_dead) {
+    state = "death";
+} else if (is_damaged) {
+    state = "damage";
+} else if (abs(x_speed) > 0) {
+    state = "walk";
+} else {
+    state = "idle";
+}
+
+// animazione sprite
+switch (state) {
+    case "damage":
+        sprite_index = damage_spr;
+        image_speed = 1;
+
+        if (image_index >= image_number - 1 && damage_time <= 0) {
+	        is_damaged = false;
+	    }
+    break;
+    case "death":
+        sprite_index = death_spr;
+        image_speed = 0;
+		image_index = image_number - 1; 
+    break;
+    case "walk":
+        sprite_index = walk_spr;
+        image_speed = 1;
+    break;
+    default: // idle
+        sprite_index = idle_spr;
+        image_speed = 1;
+    break;
+}
+
+mask_index = mask_spr; // imposta la maschera di collisione dello spirte idle
 
 // gestine morte
 if (is_dead) {
@@ -66,16 +130,19 @@ if (place_meeting(x, y + y_speed, obj_desk_block_1)
 
 y += y_speed;
 
-// animazione sprite
-if (is_damaged) {
-	sprite_index = damage_spr;
-	image_speed = 0;
-} else if abs(x_speed) > 0 { // camminata
-	sprite_index = walk_spr; 
-	image_speed = 1;
-} else { // fermo
-	sprite_index = idle_spr;
-	image_speed = 1;
+// gestione danno
+if (hit_invulnerable) {
+    hit_cooldown--;
+
+    if (hit_cooldown <= 0) {
+        hit_invulnerable = false;
+    }
 }
 
-mask_index = mask_spr; // imposta la maschera di collisione dello spirte idle
+if (is_damaged) {
+    damage_time--;
+
+    if (damage_time <= 0) {
+        is_damaged = false;
+    }
+}

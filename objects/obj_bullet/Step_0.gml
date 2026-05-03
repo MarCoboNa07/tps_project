@@ -27,7 +27,7 @@ if (_enemy != noone) {
 // collisione boss
 var _boss = instance_place(x, y, obj_boss);
 if (_boss != noone) {
-    // danno dopo
+    _boss.take_damage(1);
     instance_destroy();
 }
 
