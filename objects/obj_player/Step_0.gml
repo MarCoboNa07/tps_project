@@ -148,6 +148,12 @@ if (is_damaged) {
     }
 }
 
+// sparo
+if (mouse_check_button_pressed(mb_left)) {
+	var _bullet = instance_create_layer(x + 24 * face, y - 50, "bullets_layer", obj_bullet);
+	_bullet.move_dir = face;
+}
+
 // animazione sprite
 if (is_damaged) {
 	sprite_index = damage_spr;
@@ -155,7 +161,7 @@ if (is_damaged) {
 } else if (!on_ground) { // salto
 	sprite_index = jump_spr;
 	image_speed = 0;
-	
+
 	// cambia frame in base alla posizione
 	if (y_speed < -4) { // salita veloce
         image_index = 0;

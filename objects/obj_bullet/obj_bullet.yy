@@ -1,16 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bg_lv2",
+  "%Name":"obj_bullet",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bg_lv2",
+  "name":"obj_bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_backgrounds",
-    "path":"folders/Objects/obj_backgrounds.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bg_lv2",
-    "path":"sprites/spr_bg_lv2/spr_bg_lv2.yy",
+    "name":"spr_fireball",
+    "path":"sprites/spr_fireball/spr_fireball.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -10,8 +10,8 @@
   "name":"obj_bg_game_menu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"obj_backgrounds",
+    "path":"folders/Objects/obj_backgrounds.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -45,7 +45,6 @@ if (room == rm_level_1) {
     damage_spr = spr_gigante_damage;
     death_spr  = spr_gigante_death;
 }
-show_debug_message("Sprite: " + string(sprite_index));
 
 // movimento
 move_speed = 1
