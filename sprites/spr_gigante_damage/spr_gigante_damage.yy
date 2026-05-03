@@ -26,7 +26,7 @@
   "origin":7,
   "parent":{
     "name":"spr_boss_gigante",
-    "path":"folders/Sprites/spr_boss/spr_boss_gigante.yy",
+    "path":"folders/Sprites/spr_enemies/spr_boss/spr_boss_gigante.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

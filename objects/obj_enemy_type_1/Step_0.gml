@@ -1,3 +1,11 @@
+function die() {
+	is_dead = true;
+    death_timer = room_speed * 0.5;
+    move_speed = 0;
+    y_speed = 0;
+    x_speed = 0;
+}
+
 // movimento sull'asse x automatico
 x_speed = move_dir * move_speed;
 

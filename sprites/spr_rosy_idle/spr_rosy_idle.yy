@@ -26,7 +26,7 @@
   "origin":7,
   "parent":{
     "name":"spr_boss_rosy",
-    "path":"folders/Sprites/spr_boss/spr_boss_rosy.yy",
+    "path":"folders/Sprites/spr_enemies/spr_boss/spr_boss_rosy.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

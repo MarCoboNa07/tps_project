@@ -89,9 +89,7 @@ var _enemy = instance_place(x, y + 1, obj_enemy_type_1);
 
 if (_enemy != noone) {
 	if (y_speed > 0 && y < _enemy.y) { // kill nemico
-		_enemy.is_dead = true;
-		_enemy.death_timer = room_speed * 0.5;
-		
+		_enemy.die();
 		y_speed = jump_speed * 0.7;
 	} else if (!invulnerable) { // subisce danno
         n_lives -= 1;

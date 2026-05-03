@@ -18,8 +18,9 @@ if (can_hit) {
 
 // collisione nemico
 var _enemy = instance_place(x, y, obj_enemy_type_1);
+
 if (_enemy != noone) {
-    _enemy.is_dead = true; // poi gestirai danno
+    _enemy.die();
     instance_destroy();
 }
 

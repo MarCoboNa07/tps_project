@@ -28,7 +28,7 @@
   "origin":7,
   "parent":{
     "name":"spr_boss_swag",
-    "path":"folders/Sprites/spr_boss/spr_boss_swag.yy",
+    "path":"folders/Sprites/spr_enemies/spr_boss/spr_boss_swag.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

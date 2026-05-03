@@ -31,7 +31,7 @@
   "origin":7,
   "parent":{
     "name":"spr_boss_turtulix",
-    "path":"folders/Sprites/spr_boss/spr_boss_turtulix.yy",
+    "path":"folders/Sprites/spr_enemies/spr_boss/spr_boss_turtulix.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
