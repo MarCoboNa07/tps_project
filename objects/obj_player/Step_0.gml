@@ -150,8 +150,16 @@ if (is_damaged) {
 
 // sparo
 if (mouse_check_button_pressed(mb_left)) {
-	var _bullet = instance_create_layer(x + 24 * face, y - 50, "bullets_layer", obj_bullet);
-	_bullet.move_dir = face;
+	var spawn_x = x + (24 * face);
+	var spawn_y = y - 50;
+	
+	if (!place_meeting(spawn_x, spawn_y, obj_desk_block_1)
+	&& !place_meeting(spawn_x, spawn_y, obj_book_block_1)
+	&& !place_meeting(spawn_x, spawn_y, obj_book_block_2)
+	&& !place_meeting(spawn_x, spawn_y, obj_book_block_3)) {
+		var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_bullet);
+		_bullet.move_dir = face;
+	}
 }
 
 // animazione sprite
