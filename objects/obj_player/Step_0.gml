@@ -155,7 +155,7 @@ if (mouse_check_button_pressed(mb_left)) {
 	&& !place_meeting(spawn_x, spawn_y, obj_book_block_1)
 	&& !place_meeting(spawn_x, spawn_y, obj_book_block_2)
 	&& !place_meeting(spawn_x, spawn_y, obj_book_block_3)) {
-		var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_bullet);
+		var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_player_bullet);
 		_bullet.move_dir = face;
 	}
 }

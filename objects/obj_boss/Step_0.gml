@@ -32,6 +32,8 @@ if (is_dead) {
     state = "death";
 } else if (is_damaged) {
     state = "damage";
+} else if (is_attacking) {
+    state = "attack";
 } else if (abs(x_speed) > 0) {
     state = "walk";
 } else {
@@ -40,7 +42,7 @@ if (is_dead) {
 
 // animazione sprite
 switch (state) {
-    case "damage":
+    case "damage": // subisce danno
         sprite_index = damage_spr;
         image_speed = 1;
 
@@ -48,15 +50,23 @@ switch (state) {
 	        is_damaged = false;
 	    }
     break;
-    case "death":
+    case "death": // morte
         sprite_index = death_spr;
         image_speed = 0;
 		image_index = image_number - 1; 
     break;
-    case "walk":
+    case "walk": // cammina
         sprite_index = walk_spr;
         image_speed = 1;
     break;
+	case "attack": // attacco
+    sprite_index = attack_spr;
+    image_speed = 1;
+
+    if (image_index >= image_number - 1) {
+        is_attacking = false;
+    }
+break;
     default: // idle
         sprite_index = idle_spr;
         image_speed = 1;
@@ -145,4 +155,27 @@ if (is_damaged) {
     if (damage_time <= 0) {
         is_damaged = false;
     }
+}
+
+// timer sparo
+shoot_timer--;
+
+if (shoot_timer <= 0 && !is_dead) {
+	is_attacking = true;
+    attack_time = room_speed * 0.5;
+	
+    var spawn_x = x + (24 * face);
+    var spawn_y = y - 40;
+
+    if (!place_meeting(spawn_x, spawn_y, obj_desk_block_1)
+    && !place_meeting(spawn_x, spawn_y, obj_book_block_1)
+    && !place_meeting(spawn_x, spawn_y, obj_book_block_2)
+    && !place_meeting(spawn_x, spawn_y, obj_book_block_3)) {
+        var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_boss_bullet);
+		
+        _bullet.move_dir = face;
+        _bullet.move_speed = 4;
+    }
+
+    shoot_timer = room_speed * 2;
 }

@@ -69,3 +69,8 @@ hit_invulnerable = false;
 // morte
 is_dead = false;
 death_timer = 0;
+
+// attacco
+shoot_timer = room_speed * 2;
+is_attacking = false;
+attack_time = 0;
