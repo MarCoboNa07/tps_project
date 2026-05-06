@@ -1,6 +1,6 @@
 // verifica se il gioco è in pausa
 if (obj_pause_controller.paused) {
-	exit
+	exit;
 }
 
 // input
@@ -12,8 +12,8 @@ if (is_damaged) {
 	x_speed = 0;
 }
 
-// movimento sull'asse x
-move_dir = right_key - left_key; // direzione
+// direzione sull'asse x
+move_dir = right_key - left_key;
 
 // verifica se il personaggio si sta muovento
 if (move_dir != 0) {
@@ -27,8 +27,7 @@ var _sub_pixel = 0.5
 if (place_meeting(x + x_speed, y, obj_desk_block_1) 
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
-	|| place_meeting(x + x_speed, y, obj_book_block_3)) { // verifica se il player incontra un blocco
-	// fai avvicinare il player al blocco con precisione
+	|| place_meeting(x + x_speed, y, obj_book_block_3)) {
 	var _pixel_check = _sub_pixel * sign(x_speed)
 	while (!place_meeting(x + _pixel_check, y, obj_desk_block_1) 
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_1)
@@ -40,10 +39,10 @@ if (place_meeting(x + x_speed, y, obj_desk_block_1)
 	x_speed = 0; // imposta la velocità a 0 per far collidere il player con il blocco
 }
 
-x += x_speed; // movimento
+x += x_speed; // movimento 
 
 // movimento sull'asse y
-y_speed += grav; // gravità
+y_speed += grav;
 
 // salto
 if (jump_key_pressed && on_ground) {
@@ -60,7 +59,6 @@ if (place_meeting(x, y + y_speed, obj_desk_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
 	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
-	// fai avvicinare il player al blocco con precisione
 	var _pixel_check = _sub_pixel * sign(y_speed)
 	while (!place_meeting(x, y + _pixel_check, obj_desk_block_1) 
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
@@ -82,7 +80,7 @@ if (y_speed >= 0 && (place_meeting(x, y + 1, obj_desk_block_1)
 	on_ground = false;
 }
 
-y += y_speed; // movimento
+y += y_speed; // movimento sull'asse y
 
 // collisione nemico
 var _enemy = instance_place(x, y + 1, obj_enemy_type_1);
@@ -149,7 +147,13 @@ if (is_damaged) {
 // sparo
 if (mouse_check_button_pressed(mb_left)) {
 	var spawn_x = x + (24 * face);
-	var spawn_y = y - 50;
+	var spawn_y = 0;
+	
+	if (global.selected_character == 0) {
+		spawn_y = y - 50;
+	} else if (global.selected_character == 1) {
+		spawn_y = y - 30;
+	}
 	
 	if (!place_meeting(spawn_x, spawn_y, obj_desk_block_1)
 	&& !place_meeting(spawn_x, spawn_y, obj_book_block_1)

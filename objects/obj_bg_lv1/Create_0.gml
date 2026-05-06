@@ -1,9 +1,9 @@
 // poszione
-pos_x = 0
-pos_y = 0
+pos_x = 0;
+pos_y = 0;
 
 // dimensioni
-scale_x = 0.8333333
-scale_y = 0.71875
+scale_x = 0.8333333;
+scale_y = 0.71875;
 
-parallax = 0.5
+parallax = 0.5;

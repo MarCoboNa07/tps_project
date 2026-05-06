@@ -22,6 +22,16 @@ function die() {
     move_speed = 0;
     x_speed = 0;
     y_speed = 0;
+	
+	if (room == rm_level_1) {
+		room_goto(rm_level_2);
+	} else if (rm_level_2) {
+		room_goto(rm_level_3);
+	} else if (rm_level_3) {
+		room_goto(rm_level_4);
+	} else if (rm_level_4) {
+		room_goto(rm_level_5);
+	}
 }
 
 // movimento sull'asse x automatico

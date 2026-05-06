@@ -1,18 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player_bullet",
+  "%Name":"obj_bg_lv5",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_player_bullet",
+  "name":"obj_bg_lv5",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_bullets",
-    "path":"folders/Objects/obj_bullets.yy",
+    "name":"obj_backgrounds",
+    "path":"folders/Objects/obj_backgrounds.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_bg_lv5",
+    "path":"sprites/spr_bg_lv5/spr_bg_lv5.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

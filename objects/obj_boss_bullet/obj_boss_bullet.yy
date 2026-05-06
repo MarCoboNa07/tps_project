@@ -11,8 +11,8 @@
   "name":"obj_boss_bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"bullets",
-    "path":"folders/Objects/bullets.yy",
+    "name":"obj_bullets",
+    "path":"folders/Objects/obj_bullets.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -1,7 +1,13 @@
 // sprite
-sprite_index = spr_fireball;
+if (global.selected_character == 0) {
+	sprite_index = spr_fireball;
+	mask_index = spr_fireball;
+} else if (global.selected_character == 1) {
+	sprite_index = spr_kebab;
+	mask_index = spr_kebab;
+}
+
 image_speed = 0.3;
-mask_index = spr_fireball;
 
 // dimensione
 scale_x = 1;
