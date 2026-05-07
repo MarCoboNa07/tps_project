@@ -9,7 +9,7 @@ var sw = sprite_get_width(sprite_index) * scale_x;
 var offset = (cam_x * parallax) - floor((cam_x * parallax) / sw) * sw;
 
 // quante copie servono
-var count = ceil(cam_w / sw) + 3;
+var count = ceil(cam_w / sw) + 4;
 
 // disegno
 for (var i = 0; i < count; i++) {
