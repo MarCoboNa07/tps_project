@@ -9,9 +9,11 @@ if (move_dir != 0) {
 // distruzione sui blocchi
 if (can_hit) {
 	if (place_meeting(x, y, obj_desk_block_1) 
-	|| place_meeting(x, y, obj_book_block_1)
-	|| place_meeting(x, y, obj_book_block_2)
-	|| place_meeting(x, y, obj_book_block_3)) {
+		|| place_meeting(x, y, obj_desk_block_2)
+		|| place_meeting(x, y, obj_book_block_1)
+		|| place_meeting(x, y, obj_book_block_2)
+		|| place_meeting(x, y, obj_book_block_3)
+		|| place_meeting(x, y, obj_backpack_block)) {
 	    instance_destroy();
 	}
 }

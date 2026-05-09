@@ -25,11 +25,11 @@ function die() {
 	
 	if (room == rm_level_1) {
 		room_goto(rm_level_2);
-	} else if (rm_level_2) {
+	} else if (room == rm_level_2) {
 		room_goto(rm_level_3);
-	} else if (rm_level_3) {
+	} else if (room == rm_level_3) {
 		room_goto(rm_level_4);
-	} else if (rm_level_4) {
+	} else if (room == rm_level_4) {
 		room_goto(rm_level_5);
 	}
 }
@@ -104,15 +104,19 @@ var _sub_pixel = 0.5;
 
 // collisioni orizzontali
 if (place_meeting(x + x_speed, y, obj_desk_block_1) 
+	|| place_meeting(x + x_speed, y, obj_desk_block_2)
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
-	|| place_meeting(x + x_speed, y, obj_book_block_3)) {
+	|| place_meeting(x + x_speed, y, obj_book_block_3)
+	|| place_meeting(x + x_speed, y, obj_backpack_block)) {
     var _pixel_check = _sub_pixel * sign(x_speed);
     
     while (!place_meeting(x + _pixel_check, y, obj_desk_block_1)
+		&& !place_meeting(x + _pixel_check, y, obj_desk_block_2)
 	    && !place_meeting(x + _pixel_check, y, obj_book_block_1)
 	    && !place_meeting(x + _pixel_check, y, obj_book_block_2)
-	    && !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
+	    && !place_meeting(x + _pixel_check, y, obj_book_block_3)
+		&& !place_meeting(x + _pixel_check, y, obj_backpack_block)) {
         x += _pixel_check;
     }
 
@@ -133,15 +137,19 @@ if (y_speed > term_vel) {
 
 // collisioni verticali
 if (place_meeting(x, y + y_speed, obj_desk_block_1) 
+	|| place_meeting(x, y + y_speed, obj_desk_block_2)
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
-	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
+	|| place_meeting(x, y + y_speed, obj_book_block_3)
+	|| place_meeting(x, y + y_speed, obj_backpack_block)) {
     var _pixel_check = _sub_pixel * sign(y_speed);
     
     while (!place_meeting(x, y + _pixel_check, obj_desk_block_1)
+		&& !place_meeting(x, y + _pixel_check, obj_desk_block_2)
 	    && !place_meeting(x, y + _pixel_check, obj_book_block_1)
 	    && !place_meeting(x, y + _pixel_check, obj_book_block_2)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
+	    && !place_meeting(x, y + _pixel_check, obj_book_block_3)
+		&& !place_meeting(x, y + _pixel_check, obj_backpack_block)) {
         y += _pixel_check;
     }
 
@@ -178,9 +186,11 @@ if (shoot_timer <= 0 && !is_dead) {
     var spawn_y = y - 40;
 
     if (!place_meeting(spawn_x, spawn_y, obj_desk_block_1)
-    && !place_meeting(spawn_x, spawn_y, obj_book_block_1)
-    && !place_meeting(spawn_x, spawn_y, obj_book_block_2)
-    && !place_meeting(spawn_x, spawn_y, obj_book_block_3)) {
+		&& !place_meeting(spawn_x, spawn_y, obj_desk_block_2)
+	    && !place_meeting(spawn_x, spawn_y, obj_book_block_1)
+	    && !place_meeting(spawn_x, spawn_y, obj_book_block_2)
+	    && !place_meeting(spawn_x, spawn_y, obj_book_block_3)
+		&& !place_meeting(spawn_x, spawn_y, obj_backpack_block)) {
         var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_boss_bullet);
 		
         _bullet.move_dir = face;
@@ -189,3 +199,4 @@ if (shoot_timer <= 0 && !is_dead) {
 
     shoot_timer = room_speed * 2;
 }
+ 

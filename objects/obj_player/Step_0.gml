@@ -25,14 +25,18 @@ x_speed = move_dir * move_speed; // calcola la velocità
 // collisione blocchi
 var _sub_pixel = 0.5
 if (place_meeting(x + x_speed, y, obj_desk_block_1) 
+	|| place_meeting(x + x_speed, y, obj_desk_block_2)
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
-	|| place_meeting(x + x_speed, y, obj_book_block_3)) {
+	|| place_meeting(x + x_speed, y, obj_book_block_3)
+	|| place_meeting(x + x_speed, y, obj_backpack_block)) {
 	var _pixel_check = _sub_pixel * sign(x_speed)
 	while (!place_meeting(x + _pixel_check, y, obj_desk_block_1) 
+		&& !place_meeting(x + _pixel_check, y, obj_desk_block_2)
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_1)
 		&& !place_meeting(x + _pixel_check, y, obj_book_block_2)
-		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
+		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)
+		&& !place_meeting(x + _pixel_check, y, obj_backpack_block)) {
 		x += _pixel_check;
 	}
 	
@@ -56,14 +60,18 @@ if (y_speed > term_vel) {
 
 // collisioni blocchi
 if (place_meeting(x, y + y_speed, obj_desk_block_1) 
+	|| place_meeting(x, y + y_speed, obj_desk_block_2)
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
-	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
+	|| place_meeting(x, y + y_speed, obj_book_block_3)
+	|| place_meeting(x, y + y_speed, obj_backpack_block)) {
 	var _pixel_check = _sub_pixel * sign(y_speed)
 	while (!place_meeting(x, y + _pixel_check, obj_desk_block_1) 
+		&& !place_meeting(x, y + _pixel_check, obj_desk_block_2)
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
 		&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
-		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
+		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)
+		&& !place_meeting(x, y + _pixel_check, obj_backpack_block)) {
 		y += _pixel_check;
 	}
 	
@@ -72,9 +80,11 @@ if (place_meeting(x, y + y_speed, obj_desk_block_1)
 
 // verifica se il player è sopra un blocco
 if (y_speed >= 0 && (place_meeting(x, y + 1, obj_desk_block_1) 
+	|| place_meeting(x, y + 1, obj_desk_block_2)
 	|| place_meeting(x, y + 1, obj_book_block_1)
 	|| place_meeting(x, y + 1, obj_book_block_2)
-	|| place_meeting(x, y + 1, obj_book_block_3))) {
+	|| place_meeting(x, y + 1, obj_book_block_3)
+	|| place_meeting(x, y + 1, obj_backpack_block))) {
 	on_ground = true;
 } else {
 	on_ground = false;
@@ -156,9 +166,11 @@ if (mouse_check_button_pressed(mb_left)) {
 	}
 	
 	if (!place_meeting(spawn_x, spawn_y, obj_desk_block_1)
-	&& !place_meeting(spawn_x, spawn_y, obj_book_block_1)
-	&& !place_meeting(spawn_x, spawn_y, obj_book_block_2)
-	&& !place_meeting(spawn_x, spawn_y, obj_book_block_3)) {
+		&& !place_meeting(spawn_x, spawn_y, obj_desk_block_2)
+		&& !place_meeting(spawn_x, spawn_y, obj_book_block_1)
+		&& !place_meeting(spawn_x, spawn_y, obj_book_block_2)
+		&& !place_meeting(spawn_x, spawn_y, obj_book_block_3)
+		&& !place_meeting(spawn_x, spawn_y, obj_backpack_block)) {
 		var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_player_bullet);
 		_bullet.move_dir = face;
 	}

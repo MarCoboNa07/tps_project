@@ -29,15 +29,19 @@ var _sub_pixel = 0.5;
 
 // collisioni orizzontali
 if (place_meeting(x + x_speed, y, obj_desk_block_1) 
+	|| place_meeting(x + x_speed, y, obj_desk_block_2)
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
-	|| place_meeting(x + x_speed, y, obj_book_block_3)) {
+	|| place_meeting(x + x_speed, y, obj_book_block_3)
+	|| place_meeting(x + x_speed, y, obj_backpack_block)) {
     var _pixel_check = _sub_pixel * sign(x_speed);
     
     while (!place_meeting(x + _pixel_check, y, obj_desk_block_1)
+		&& !place_meeting(x + _pixel_check, y, obj_desk_block_2)
 	    && !place_meeting(x + _pixel_check, y, obj_book_block_1)
 	    && !place_meeting(x + _pixel_check, y, obj_book_block_2)
-	    && !place_meeting(x + _pixel_check, y, obj_book_block_3)) {
+	    && !place_meeting(x + _pixel_check, y, obj_book_block_3)
+		&& !place_meeting(x + _pixel_check, y, obj_backpack_block)) {
         x += _pixel_check;
     }
 
@@ -58,15 +62,19 @@ if (y_speed > term_vel) {
 
 // collisioni verticali
 if (place_meeting(x, y + y_speed, obj_desk_block_1) 
+	|| place_meeting(x, y + y_speed, obj_desk_block_2)
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
-	|| place_meeting(x, y + y_speed, obj_book_block_3)) {
+	|| place_meeting(x, y + y_speed, obj_book_block_3)
+	|| place_meeting(x, y + y_speed, obj_backpack_block)) {
     var _pixel_check = _sub_pixel * sign(y_speed);
     
     while (!place_meeting(x, y + _pixel_check, obj_desk_block_1)
+	&& !place_meeting(x, y + _pixel_check, obj_desk_block_2)
 	&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
 	&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
-	&& !place_meeting(x, y + _pixel_check, obj_book_block_3)) {
+	&& !place_meeting(x, y + _pixel_check, obj_book_block_3)
+	&& !place_meeting(x, y + _pixel_check, obj_backpack_block)) {
         y += _pixel_check;
     }
 
@@ -78,10 +86,14 @@ y += y_speed;
 // controllo se è a terra
 if (y_speed >= 0 && (
 place_meeting(x, y + 1, obj_desk_block_1) 
+	|| place_meeting(x, y + 1, obj_desk_block_2)
 	|| place_meeting(x, y + 1, obj_book_block_1)
 	|| place_meeting(x, y + 1, obj_book_block_2)
-	|| place_meeting(x, y + 1, obj_book_block_3))) {
+	|| place_meeting(x, y + 1, obj_book_block_3)
+	|| place_meeting(x, y + 1, obj_backpack_block))) {
     on_ground = true;
 } else {
     on_ground = false;
 }
+
+mask_index = mask_spr;

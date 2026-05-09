@@ -42,6 +42,7 @@
   },
   "name":"progetto_tps",
   "resources":[
+    {"id":{"name":"obj_backpack_block","path":"objects/obj_backpack_block/obj_backpack_block.yy",},},
     {"id":{"name":"obj_bg_2","path":"objects/obj_bg_2/obj_bg_2.yy",},},
     {"id":{"name":"obj_bg_game_menu","path":"objects/obj_bg_game_menu/obj_bg_game_menu.yy",},},
     {"id":{"name":"obj_bg_lv1","path":"objects/obj_bg_lv1/obj_bg_lv1.yy",},},
@@ -66,6 +67,7 @@
     {"id":{"name":"obj_char_icon_2","path":"objects/obj_char_icon_2/obj_char_icon_2.yy",},},
     {"id":{"name":"obj_cisco","path":"objects/obj_cisco/obj_cisco.yy",},},
     {"id":{"name":"obj_desk_block_1","path":"objects/obj_desk_block_1/obj_desk_block_1.yy",},},
+    {"id":{"name":"obj_desk_block_2","path":"objects/obj_desk_block_2/obj_desk_block_2.yy",},},
     {"id":{"name":"obj_enemy_type_1","path":"objects/obj_enemy_type_1/obj_enemy_type_1.yy",},},
     {"id":{"name":"obj_life","path":"objects/obj_life/obj_life.yy",},},
     {"id":{"name":"obj_logo","path":"objects/obj_logo/obj_logo.yy",},},
@@ -155,9 +157,9 @@
     {"roomId":{"name":"rm_character_select","path":"rooms/rm_character_select/rm_character_select.yy",},},
     {"roomId":{"name":"rm_level_1","path":"rooms/rm_level_1/rm_level_1.yy",},},
     {"roomId":{"name":"rm_level_2","path":"rooms/rm_level_2/rm_level_2.yy",},},
-    {"roomId":{"name":"rm_level_3","path":"rooms/rm_level_3/rm_level_3.yy",},},
     {"roomId":{"name":"rm_level_4","path":"rooms/rm_level_4/rm_level_4.yy",},},
     {"roomId":{"name":"rm_level_5","path":"rooms/rm_level_5/rm_level_5.yy",},},
+    {"roomId":{"name":"rm_level_3","path":"rooms/rm_level_3/rm_level_3.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

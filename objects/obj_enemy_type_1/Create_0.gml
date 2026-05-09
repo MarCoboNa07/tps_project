@@ -1,7 +1,9 @@
 // sprite
 if (room == rm_level_1) {
+	mask_spr = spr_maranza_1;
 	sprite_index = spr_maranza_1;
 } else if (room == rm_level_2) {
+	mask_spr = spr_maranza_2;
 	sprite_index = spr_maranza_2;
 }
 
