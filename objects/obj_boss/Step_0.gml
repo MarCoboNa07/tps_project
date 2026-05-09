@@ -102,23 +102,39 @@ if (is_dead) {
 
 var _sub_pixel = 0.5;
 
-// collisioni orizzontali
-if (place_meeting(x + x_speed, y, obj_desk_block_1) 
-	|| place_meeting(x + x_speed, y, obj_desk_block_2)
+// collisione blocchi orizzontale
+if (place_meeting(x + x_speed, y, obj_algorithm_block)
+	|| place_meeting(x + x_speed, y, obj_backpack_block)
 	|| place_meeting(x + x_speed, y, obj_book_block_1)
 	|| place_meeting(x + x_speed, y, obj_book_block_2)
 	|| place_meeting(x + x_speed, y, obj_book_block_3)
-	|| place_meeting(x + x_speed, y, obj_backpack_block)) {
+	|| place_meeting(x + x_speed, y, obj_bread_board_block)
+	|| place_meeting(x + x_speed, y, obj_desk_block_1) 
+	|| place_meeting(x + x_speed, y, obj_desk_block_2)
+	|| place_meeting(x + x_speed, y, obj_desk_block_3)
+	|| place_meeting(x + x_speed, y, obj_ethernet_cable_block)
+	|| place_meeting(x + x_speed, y, obj_pc_block)
+	|| place_meeting(x + x_speed, y, obj_rack_block)
+	|| place_meeting(x + x_speed, y, obj_sink_block)
+	|| place_meeting(x + x_speed, y, obj_switch_block)) {
+		
     var _pixel_check = _sub_pixel * sign(x_speed);
-    
-    while (!place_meeting(x + _pixel_check, y, obj_desk_block_1)
+    while (!place_meeting(x + _pixel_check, y, obj_algorithm_block) 
+		&& !place_meeting(x + _pixel_check, y, obj_backpack_block)
+		&& !place_meeting(x + _pixel_check, y, obj_book_block_1)
+		&& !place_meeting(x + _pixel_check, y, obj_book_block_2)
+		&& !place_meeting(x + _pixel_check, y, obj_book_block_3)
+		&& !place_meeting(x + _pixel_check, y, obj_bread_board_block)
+		&& !place_meeting(x + _pixel_check, y, obj_desk_block_1) 
 		&& !place_meeting(x + _pixel_check, y, obj_desk_block_2)
-	    && !place_meeting(x + _pixel_check, y, obj_book_block_1)
-	    && !place_meeting(x + _pixel_check, y, obj_book_block_2)
-	    && !place_meeting(x + _pixel_check, y, obj_book_block_3)
-		&& !place_meeting(x + _pixel_check, y, obj_backpack_block)) {
-        x += _pixel_check;
-    }
+		&& !place_meeting(x + _pixel_check, y, obj_desk_block_3)
+		&& !place_meeting(x + _pixel_check, y, obj_ethernet_cable_block)
+		&& !place_meeting(x + _pixel_check, y, obj_pc_block)
+		&& !place_meeting(x + _pixel_check, y, obj_rack_block)
+		&& !place_meeting(x + _pixel_check, y, obj_sink_block)
+		&& !place_meeting(x + _pixel_check, y, obj_switch_block)) {
+		x += _pixel_check;
+	}
 
     move_dir *= -1; // cambia direzione
 }
@@ -135,23 +151,39 @@ if (y_speed > term_vel) {
     y_speed = term_vel;
 }
 
-// collisioni verticali
-if (place_meeting(x, y + y_speed, obj_desk_block_1) 
-	|| place_meeting(x, y + y_speed, obj_desk_block_2)
+// collisione blocchi verticale
+if (place_meeting(x, y + y_speed, obj_algorithm_block) 
+	|| place_meeting(x, y + y_speed, obj_backpack_block)
 	|| place_meeting(x, y + y_speed, obj_book_block_1)
 	|| place_meeting(x, y + y_speed, obj_book_block_2)
 	|| place_meeting(x, y + y_speed, obj_book_block_3)
-	|| place_meeting(x, y + y_speed, obj_backpack_block)) {
+	|| place_meeting(x, y + y_speed, obj_bread_board_block)
+	|| place_meeting(x, y + y_speed, obj_desk_block_1) 
+	|| place_meeting(x, y + y_speed, obj_desk_block_2)
+	|| place_meeting(x, y + y_speed, obj_desk_block_3)
+	|| place_meeting(x, y + y_speed, obj_ethernet_cable_block)
+	|| place_meeting(x, y + y_speed, obj_pc_block)
+	|| place_meeting(x, y + y_speed, obj_rack_block)
+	|| place_meeting(x, y + y_speed, obj_sink_block)
+	|| place_meeting(x, y + y_speed, obj_switch_block)) {
+		
     var _pixel_check = _sub_pixel * sign(y_speed);
-    
-    while (!place_meeting(x, y + _pixel_check, obj_desk_block_1)
+    while (!place_meeting(x, y + _pixel_check, obj_algorithm_block) 
+		&& !place_meeting(x, y + _pixel_check, obj_backpack_block)
+		&& !place_meeting(x, y + _pixel_check, obj_book_block_1)
+		&& !place_meeting(x, y + _pixel_check, obj_book_block_2)
+		&& !place_meeting(x, y + _pixel_check, obj_book_block_3)
+		&& !place_meeting(x, y + _pixel_check, obj_bread_board_block)
+		&& !place_meeting(x, y + _pixel_check, obj_desk_block_1) 
 		&& !place_meeting(x, y + _pixel_check, obj_desk_block_2)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_1)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_2)
-	    && !place_meeting(x, y + _pixel_check, obj_book_block_3)
-		&& !place_meeting(x, y + _pixel_check, obj_backpack_block)) {
-        y += _pixel_check;
-    }
+		&& !place_meeting(x, y + _pixel_check, obj_desk_block_3)
+		&& !place_meeting(x, y + _pixel_check, obj_ethernet_cable_block)
+		&& !place_meeting(x, y + _pixel_check, obj_pc_block)
+		&& !place_meeting(x, y + _pixel_check, obj_rack_block)
+		&& !place_meeting(x, y + _pixel_check, obj_sink_block)
+		&& !place_meeting(x, y + _pixel_check, obj_switch_block)) {
+		y += _pixel_check;
+	}
 
     y_speed = 0;
 }
@@ -185,12 +217,21 @@ if (shoot_timer <= 0 && !is_dead) {
     var spawn_x = x + (24 * face);
     var spawn_y = y - 40;
 
-    if (!place_meeting(spawn_x, spawn_y, obj_desk_block_1)
+    if (!place_meeting(spawn_x, spawn_y, obj_algorithm_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_backpack_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_book_block_1)
+		&& !place_meeting(spawn_x, spawn_y, obj_book_block_2)
+		&& !place_meeting(spawn_x, spawn_y, obj_book_block_3)
+		&& !place_meeting(spawn_x, spawn_y, obj_bread_board_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_desk_block_1)
 		&& !place_meeting(spawn_x, spawn_y, obj_desk_block_2)
-	    && !place_meeting(spawn_x, spawn_y, obj_book_block_1)
-	    && !place_meeting(spawn_x, spawn_y, obj_book_block_2)
-	    && !place_meeting(spawn_x, spawn_y, obj_book_block_3)
-		&& !place_meeting(spawn_x, spawn_y, obj_backpack_block)) {
+		&& !place_meeting(spawn_x, spawn_y, obj_desk_block_3)
+		&& !place_meeting(spawn_x, spawn_y, obj_ethernet_cable_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_pc_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_rack_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_sink_block)
+		&& !place_meeting(spawn_x, spawn_y, obj_switch_block)) {
+			
         var _bullet = instance_create_layer(spawn_x, spawn_y, "bullets_layer", obj_boss_bullet);
 		
         _bullet.move_dir = face;
