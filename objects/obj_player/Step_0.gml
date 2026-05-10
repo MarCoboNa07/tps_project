@@ -135,12 +135,35 @@ if (y_speed >= 0 && (place_meeting(x, y + 1, obj_algorithm_block)
 
 y += y_speed; // movimento sull'asse y
 
-// collisione nemico
-var _enemy = instance_place(x, y + 1, obj_enemy_type_1);
+// collisione nemico tipo 1
+var _enemy_type_1 = instance_place(x, y + 1, obj_enemy_type_1);
 
-if (_enemy != noone) {
-	if (y_speed > 0 && y < _enemy.y) { // kill nemico
-		_enemy.die();
+if (_enemy_type_1 != noone) {
+	if (y_speed > 0 && y < _enemy_type_1.y) { // kill nemico
+		_enemy_type_1.die();
+		y_speed = jump_speed * 0.7;
+	} else if (!invulnerable) { // subisce danno
+        n_lives -= 1;
+        invulnerable = true;
+        invulnerable_time = room_speed * 2;
+
+		is_damaged = true;
+		damage_time = room_speed * 0.5;
+
+        // morte
+        if (n_lives <= 0) {
+            sprite_index = death_spr;
+			room_goto(rm_menu);
+        }
+    }
+}
+
+// collisione nemico tipo 2
+var _enemy_type_2 = instance_place(x, y + 1, obj_enemy_type_2);
+
+if (_enemy_type_2 != noone) {
+	if (y_speed > 0 && y < _enemy_type_2.y) { // kill nemico
+		_enemy_type_2.die();
 		y_speed = jump_speed * 0.7;
 	} else if (!invulnerable) { // subisce danno
         n_lives -= 1;

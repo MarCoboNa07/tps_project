@@ -27,12 +27,20 @@ if (can_hit) {
     }
 }
 
-// collisione nemico
-var _enemy = instance_place(x, y, obj_enemy_type_1);
+// collisione nemico tipo 1
+var _enemy_type_1 = instance_place(x, y, obj_enemy_type_1);
 
-if (_enemy != noone) {
-    _enemy.die();
+if (_enemy_type_1 != noone) {
+    _enemy_type_1.die();
     instance_destroy();
+}
+
+// collisione nemico tipo 2
+var _enemy_type_2 = instance_place(x, y, obj_enemy_type_2);
+
+if (_enemy_type_2 != noone) {
+	_enemy_type_2.take_damage(1);
+	instance_destroy();
 }
 
 // collisione boss

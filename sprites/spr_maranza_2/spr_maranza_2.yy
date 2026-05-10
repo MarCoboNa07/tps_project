@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"spr_enemies",
-    "path":"folders/Sprites/spr_enemies.yy",
+    "name":"spr_enemies_type_1",
+    "path":"folders/Sprites/spr_enemies/spr_enemies_type_1.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

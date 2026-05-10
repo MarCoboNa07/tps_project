@@ -1,8 +1,8 @@
 // sprite
-if (room == rm_level_1) {
+if (room == rm_level_1 || room == rm_level_3 || room == rm_level_5) {
 	mask_spr = spr_maranza_1;
 	sprite_index = spr_maranza_1;
-} else if (room == rm_level_2) {
+} else if (room == rm_level_2 || room == rm_level_4) {
 	mask_spr = spr_maranza_2;
 	sprite_index = spr_maranza_2;
 }
