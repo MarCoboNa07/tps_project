@@ -84,7 +84,6 @@
     {"name":"inst_5FBC6CE8_1","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_7A0EF660_1","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_112C182A1","path":"rooms/rm_level_3/rm_level_3.yy",},
-    {"name":"inst_3D8588C9","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_18B5AFEF","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_349AF18E","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_6C6982D7","path":"rooms/rm_level_3/rm_level_3.yy",},
@@ -124,6 +123,7 @@
     {"name":"inst_33CE61C7","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_E8035CB","path":"rooms/rm_level_3/rm_level_3.yy",},
     {"name":"inst_4DB07CFD","path":"rooms/rm_level_3/rm_level_3.yy",},
+    {"name":"inst_33B30B98","path":"rooms/rm_level_3/rm_level_3.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -135,7 +135,7 @@
       ],"layers":[],"name":"pause_layer","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":false,},
     {"$GMRInstanceLayer":"","%Name":"bullets_layer","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"bullets_layer","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":true,"effectType":null,"gridX":64,"gridY":64,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_3D8588C9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3D8588C9","objectId":{"name":"obj_bg_lv3","path":"objects/obj_bg_lv3/obj_bg_lv3.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.99999994,"scaleY":1.0,"x":0.0,"y":0.0,},
+        {"$GMRInstance":"v4","%Name":"inst_33B30B98","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_33B30B98","objectId":{"name":"obj_bg_lv3","path":"objects/obj_bg_lv3/obj_bg_lv3.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0082031,"scaleY":1.0123858,"x":-13.75,"y":2.000061,},
         {"$GMRInstance":"v4","%Name":"inst_6358D372_2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6358D372_2","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":195.0,"y":599.0,},
         {"$GMRInstance":"v4","%Name":"inst_2FB125FE1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2FB125FE1","objectId":{"name":"obj_boss","path":"objects/obj_boss/obj_boss.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":6156.0,"y":544.0,},
         {"$GMRInstance":"v4","%Name":"inst_6F5AEF36_2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6F5AEF36_2","objectId":{"name":"obj_window_controller","path":"objects/obj_window_controller/obj_window_controller.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
