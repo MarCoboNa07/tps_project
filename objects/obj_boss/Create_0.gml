@@ -48,16 +48,16 @@ if (room == rm_level_1) {
 state = "idle"; // idle, walk, damage, death
 
 // movimento
-move_speed = 1
-move_dir = 1
-x_speed = 0
-y_speed = 0
+move_speed = 1;
+move_dir = 1;
+x_speed = 0;
+y_speed = 0;
 
 // fisica
-grav = 0.275
-term_vel = 10
-on_ground = false
-face = 1
+grav = 0.275;
+term_vel = 10;
+on_ground = false;
+face = 1;
 
 // danno
 is_damaged = false;

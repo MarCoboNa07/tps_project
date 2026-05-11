@@ -6,6 +6,29 @@ if (obj_pause_controller.paused) {
 // input
 get_controls();
 
+// gestione morte
+if (is_dead) {
+    death_timer--;
+
+    sprite_index = death_spr;
+    image_speed = 0.5;
+
+    // blocca movimento
+    x_speed = 0;
+    y_speed = 0;
+	
+	if (image_index >= image_number - 1) {
+        image_index = image_number - 1;
+        image_speed = 0;
+    }
+
+    if (death_timer <= 0) {
+        global.player_lives = 3;
+        room_goto(rm_menu);
+    }
+    exit;
+}
+
 // blocca movimento se subisce danno
 if (is_damaged) {
 	move_dir = 0;
@@ -144,6 +167,11 @@ if (_enemy_type_1 != noone) {
 		y_speed = jump_speed * 0.7;
 	} else if (!invulnerable) { // subisce danno
         n_lives -= 1;
+		if (n_lives < 0) {
+			n_lives = 0;
+		} 
+		global.player_lives = n_lives;
+		
         invulnerable = true;
         invulnerable_time = room_speed * 2;
 
@@ -152,8 +180,15 @@ if (_enemy_type_1 != noone) {
 
         // morte
         if (n_lives <= 0) {
+			is_dead = true;
+			death_timer = room_speed * 2;
+			
+			x_speed = 0;
+			y_speed = 0;
+			
             sprite_index = death_spr;
-			room_goto(rm_menu);
+			image_index = 0;
+			image_speed = 1;
         }
     }
 }
@@ -167,6 +202,11 @@ if (_enemy_type_2 != noone) {
 		y_speed = jump_speed * 0.7;
 	} else if (!invulnerable) { // subisce danno
         n_lives -= 1;
+		if (n_lives < 0) {
+			n_lives = 0;
+		}
+		global.player_lives = n_lives;
+		
         invulnerable = true;
         invulnerable_time = room_speed * 2;
 

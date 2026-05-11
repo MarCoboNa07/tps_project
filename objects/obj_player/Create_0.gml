@@ -41,10 +41,18 @@ jump_speed = -7;
 on_ground = true;
 
 // vita
-n_lives = 3;
+n_lives = global.player_lives;
+if (n_lives > 3) {
+	n_lives = 3;
+}
+
 invulnerable = false;
 invulnerable_time = 0;
 
 // danno
 is_damaged = false;
 damage_time = 0;
+
+// morte
+is_dead = false;
+death_timer = 0;

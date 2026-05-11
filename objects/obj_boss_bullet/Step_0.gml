@@ -32,7 +32,12 @@ var _player = instance_place(x, y, obj_player);
 
 if (_player != noone) {
     if (!_player.invulnerable) {
-        _player.n_lives -= 1;
+        _player.n_lives -= 1;		
+		if (_player.n_lives < 0) {
+			_player.n_lives = 0;
+		}
+		global.player_lives = _player.n_lives;
+		
         _player.invulnerable = true;
         _player.invulnerable_time = room_speed * 2;
 
@@ -42,6 +47,7 @@ if (_player != noone) {
         // morte player
         if (_player.n_lives <= 0) {
             _player.sprite_index = _player.death_spr;
+			global.player_lives = 3;
             room_goto(rm_menu);
         }
     }

@@ -18,20 +18,11 @@ function take_damage(_amount) {
 // muore
 function die() {
     is_dead = true;
-    death_timer = room_speed * 1;
+    death_timer = room_speed * 2;
+	
     move_speed = 0;
     x_speed = 0;
     y_speed = 0;
-	
-	if (room == rm_level_1) {
-		room_goto(rm_level_2);
-	} else if (room == rm_level_2) {
-		room_goto(rm_level_3);
-	} else if (room == rm_level_3) {
-		room_goto(rm_level_4);
-	} else if (room == rm_level_4) {
-		room_goto(rm_level_5);
-	}
 }
 
 // movimento sull'asse x automatico
@@ -62,8 +53,12 @@ switch (state) {
     break;
     case "death": // morte
         sprite_index = death_spr;
-        image_speed = 0;
-		image_index = image_number - 1; 
+        image_speed = 0.5;
+		
+		if (image_index >= image_number - 1) {
+            image_index = image_number - 1;
+            image_speed = 0;
+        }
     break;
     case "walk": // cammina
         sprite_index = walk_spr;
@@ -90,11 +85,27 @@ if (is_dead) {
     x_speed = 0;
     y_speed = 0;
 	move_speed = 0;
-    image_speed = 0;
 	
 	death_timer--;
+	
+	sprite_index = death_spr;
+    image_speed = 0.5;
+	if (image_index >= image_number - 1) {
+        image_index = image_number - 1;
+        image_speed = 0;
+    }
 
     if (death_timer <= 0) {
+		if (room == rm_level_1) {
+            room_goto(rm_level_2);
+        } else if (room == rm_level_2) {
+            room_goto(rm_level_3);
+        } else if (room == rm_level_3) {
+            room_goto(rm_level_4);
+        } else if (room == rm_level_4) {
+            room_goto(rm_level_5);
+        }
+		
         instance_destroy();
     }
     exit;

@@ -1,2 +1,5 @@
-window_set_fullscreen(true) // imposta la finestra in fullscreen
-window_center() // posizionoa la finestra al centro
+// finestra centrata in full screen
+window_set_fullscreen(true);
+window_center();
+
+global.player_lives = 3; // vite player
