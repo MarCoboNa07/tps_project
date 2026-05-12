@@ -161,7 +161,7 @@ y += y_speed; // movimento sull'asse y
 // collisione nemico tipo 1
 var _enemy_type_1 = instance_place(x, y + 1, obj_enemy_type_1);
 
-if (_enemy_type_1 != noone) {
+if (_enemy_type_1 != noone && !_enemy_type_1.is_dead) {
 	if (y_speed > 0 && y < _enemy_type_1.y) { // kill nemico
 		_enemy_type_1.die();
 		y_speed = jump_speed * 0.7;
@@ -196,7 +196,7 @@ if (_enemy_type_1 != noone) {
 // collisione nemico tipo 2
 var _enemy_type_2 = instance_place(x, y + 1, obj_enemy_type_2);
 
-if (_enemy_type_2 != noone) {
+if (_enemy_type_2 != noone && !_enemy_type_2.is_dead) {
 	if (y_speed > 0 && y < _enemy_type_2.y) { // kill nemico
 		_enemy_type_2.die();
 		y_speed = jump_speed * 0.7;
@@ -224,7 +224,7 @@ if (_enemy_type_2 != noone) {
 // collisione boss
 var _boss = instance_place(x, y + 1, obj_boss);
 
-if (_boss != noone) {
+if (_boss != noone && !_boss.is_dead) {
 	if (!invulnerable) { // subisce danno
 		n_lives -= 1;
         invulnerable = true;
