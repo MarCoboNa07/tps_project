@@ -9,14 +9,14 @@ if (room == rm_level_1) {
     damage_spr = spr_turtulix_damage;
     death_spr  = spr_turtulix_death;
 } else if (room == rm_level_2) {
-	sprite_index = spr_turtulix_idle;
+	sprite_index = spr_scandro_idle;
 	
-	mask_spr   = spr_turtulix_idle;
-    idle_spr   = spr_turtulix_idle;
-    walk_spr   = spr_turtulix_walk;
-    attack_spr = spr_turtulix_attack;
-    damage_spr = spr_turtulix_damage;
-    death_spr  = spr_turtulix_death;
+	mask_spr   = spr_scandro_idle;
+    idle_spr   = spr_scandro_idle;
+    walk_spr   = spr_scandro_walk;
+    attack_spr = spr_scandro_attack;
+    damage_spr = spr_scandro_damage;
+    death_spr  = spr_scandro_death;
 } else if (room == rm_level_3) {
 	sprite_index = spr_rosy_idle;
 	

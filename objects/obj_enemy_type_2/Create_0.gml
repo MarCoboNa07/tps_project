@@ -1,4 +1,4 @@
-if (room == rm_level_3 || room == rm_level_4) {
+if (room == rm_level_3 || room == rm_level_4 || room == rm_level_5) {
 	sprite_index = spr_giacomo_idle;
 	
 	mask_spr = spr_giacomo_idle;
