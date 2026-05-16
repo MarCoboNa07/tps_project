@@ -14,6 +14,9 @@ if (room == rm_level_1) {
 } else if (room == rm_level_5) {
 	sprite_index = spr_query_sql;
 	mask_index = spr_query_sql;
+} else if (room == rm_boss_fight) {
+	sprite_index = spr_diploma;
+	mask_index = spr_diploma;
 }
 
 image_speed = 0.3;

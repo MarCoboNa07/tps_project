@@ -104,7 +104,9 @@ if (is_dead) {
             room_goto(rm_level_4);
         } else if (room == rm_level_4) {
             room_goto(rm_level_5);
-        }
+        } else if (room == rm_level_5) {
+			room_goto(rm_boss_fight);
+		}
 		
         instance_destroy();
     }
