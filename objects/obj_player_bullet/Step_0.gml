@@ -50,6 +50,13 @@ if (_boss != noone) {
     instance_destroy();
 }
 
+// collisione boss diritta
+var _boss_diritta = instance_place(x, y, obj_boss_diritta);
+if (_boss_diritta != noone) {
+    _boss_diritta.take_damage(1);
+    instance_destroy();
+}
+
 // lifetime per distruzione
 life_time--;
 if (life_time <= 0) {

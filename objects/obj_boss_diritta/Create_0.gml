@@ -3,11 +3,13 @@ idle_spr   = spr_diritta_idle;
 attack_spr = spr_diritta_attack;
 damage_spr = spr_diritta_damage;
 death_spr  = spr_diritta_death;
+jump_spr = spr_diritta_jump;
 
 phase3_idle_spr   = spr_diritta_god_idle;
 phase3_attack_spr = spr_diritta_god_attack;
 phase3_damage_spr = spr_diritta_god_damage;
 phase3_death_spr  = spr_diritta_god_death;
+phase3_jump_spr = spr_diritta_god_jump;
 
 sprite_index = idle_spr;
 mask_spr = idle_spr;
@@ -27,6 +29,9 @@ face = -1;
 // fisica
 grav = 0.275;
 term_vel = 10;
+
+// salto
+is_jumping = false;
 
 // hp
 max_hp = 30;

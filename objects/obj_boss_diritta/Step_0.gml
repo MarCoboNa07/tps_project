@@ -10,20 +10,50 @@ function start_phase_transition(_phase) {
 
     // cambio sprite versione god
     if (phase == 3) {
-
-        idle_spr   = phase3_idle_spr;
+		y_speed = -10;
+		is_jumping = true;
+		
+        idle_spr = phase3_idle_spr;
         attack_spr = phase3_attack_spr;
         damage_spr = phase3_damage_spr;
-        death_spr  = phase3_death_spr;
+        death_spr = phase3_death_spr;
     }
 }
 
+// prende danno
+function take_damage(_amount) {
+    if (hit_invulnerable || is_dead | phase_transition) exit;
+
+    hp -= _amount;
+	
+    hit_invulnerable = true;
+    hit_cooldown = room_speed;
+
+    is_damaged = true;
+    damage_time = room_speed * 0.5;
+
+    image_index = 0;
+
+    if (hp <= 0) {
+        die();
+    }
+}
+
+// morte
+function die() {
+    is_dead = true;
+    death_timer = room_speed * 2;
+
+    x_speed = 0;
+    y_speed = 0;
+}
+
 // cambio fase
-if (phase == 1 && hp <= 20) {
+if (phase == 1 && hp <= 20 && !phase_transition) {
     start_phase_transition(2);
 }
 
-if (phase == 2 && hp <= 10) {
+if (phase == 2 && hp <= 10 && !phase_transition) {
     start_phase_transition(3);
 }
 
@@ -57,12 +87,91 @@ if (shoot_timer <= 0 && !is_dead) {
             shoot_timer = room_speed * 1.5;
         break;
         case 3:
-            burst_count = 8;
-            shoot_timer = room_speed * 1;
+            burst_count = 6;
+            shoot_timer = room_speed * 1.5;
         break;
     }
 
     burst_timer = 0;
+}
+
+// gestione stato
+if (is_dead) {
+	state = "death";
+} else if (is_jumping) {
+	state = "jump";
+} else if (is_damaged) {
+    state = "damage";
+} else if (is_attacking) {
+    state = "attack";
+} else {
+    state = "idle";
+}
+
+// animazioni sprite
+switch (state) {
+    case "damage":
+        sprite_index = damage_spr;
+        image_speed = 1;
+
+        if (image_index >= image_number - 1 && damage_time <= 0) {
+            is_damaged = false;
+        }
+    break;
+	case "jump":
+	    sprite_index = jump_spr;
+	    image_speed = 1;
+		
+		if (image_index >= image_number - 1) {
+            image_index = image_number - 1;
+            image_speed = 0;
+        }
+	break;
+    case "death":
+        sprite_index = death_spr;
+        image_speed = 0.5;
+
+        if (image_index >= image_number - 1) {
+            image_index = image_number - 1;
+            image_speed = 0;
+        }
+    break;
+    case "attack":
+        sprite_index = attack_spr;
+        image_speed = 1;
+
+        if (image_index >= image_number - 1) {
+            is_attacking = false;
+        }
+    break;
+    default:
+        sprite_index = idle_spr;
+        image_speed = 1;
+    break;
+}
+
+mask_index = mask_spr;
+
+// gestione morte
+if (is_dead) {
+	x_speed = 0;
+    y_speed = 0;
+	
+    death_timer--;
+	
+    sprite_index = death_spr;
+    image_speed = 0.5;
+	
+	if (image_index >= image_number - 1) {
+        image_index = image_number - 1;
+        image_speed = 0;
+    }
+
+    if (death_timer <= 0) {
+		room_goto(rm_menu);
+        instance_destroy();
+    }
+    exit;
 }
 
 // gestione raffica
@@ -96,5 +205,75 @@ if (burst_count > 0) {
         if (burst_count <= 0) {
             is_attacking = false;
         }
+    }
+}
+
+// gravità
+y_speed += grav;
+
+if (y_speed > term_vel) {
+    y_speed = term_vel;
+}
+
+// collisione blocchi verticale
+var _sub_pixel = 0.5;
+
+if (place_meeting(x, y + y_speed, obj_algorithm_block)
+	|| place_meeting(x, y + y_speed, obj_backpack_block)
+	|| place_meeting(x, y + y_speed, obj_book_block_1)
+	|| place_meeting(x, y + y_speed, obj_book_block_2)
+	|| place_meeting(x, y + y_speed, obj_book_block_3)
+	|| place_meeting(x, y + y_speed, obj_bread_board_block)
+	|| place_meeting(x, y + y_speed, obj_desk_block_1)
+	|| place_meeting(x, y + y_speed, obj_desk_block_2)
+	|| place_meeting(x, y + y_speed, obj_desk_block_3)
+	|| place_meeting(x, y + y_speed, obj_ethernet_cable_block)
+	|| place_meeting(x, y + y_speed, obj_pc_block)
+	|| place_meeting(x, y + y_speed, obj_rack_block)
+	|| place_meeting(x, y + y_speed, obj_sink_block)
+	|| place_meeting(x, y + y_speed, obj_switch_block)) {
+		
+    var _pixel_check = _sub_pixel * sign(y_speed);
+    while (!place_meeting(x, y + _pixel_check, obj_algorithm_block)
+	    && !place_meeting(x, y + _pixel_check, obj_backpack_block)
+	    && !place_meeting(x, y + _pixel_check, obj_book_block_1)
+	    && !place_meeting(x, y + _pixel_check, obj_book_block_2)
+	    && !place_meeting(x, y + _pixel_check, obj_book_block_3)
+	    && !place_meeting(x, y + _pixel_check, obj_bread_board_block)
+	    && !place_meeting(x, y + _pixel_check, obj_desk_block_1)
+	    && !place_meeting(x, y + _pixel_check, obj_desk_block_2)
+	    && !place_meeting(x, y + _pixel_check, obj_desk_block_3)
+	    && !place_meeting(x, y + _pixel_check, obj_ethernet_cable_block)
+	    && !place_meeting(x, y + _pixel_check, obj_pc_block)
+	    && !place_meeting(x, y + _pixel_check, obj_rack_block)
+	    && !place_meeting(x, y + _pixel_check, obj_sink_block)
+	    && !place_meeting(x, y + _pixel_check, obj_switch_block)) {
+        y += _pixel_check;
+    }
+	
+	if (y_speed > 0) {
+        is_jumping = false;
+    }
+
+    y_speed = 0;
+}
+
+y += y_speed;
+
+// gestione danno
+if (hit_invulnerable && !phase_transition) {
+    hit_cooldown--;
+
+    if (hit_cooldown <= 0) {
+        hit_invulnerable = false;
+    }
+}
+
+// timer danno
+if (is_damaged) {
+    damage_time--;
+
+    if (damage_time <= 0) {
+        is_damaged = false;
     }
 }
