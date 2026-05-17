@@ -167,17 +167,19 @@ Non sono presenti:
 ### Fase 1
 
 - Più semplice
-- Attacchi lenti e prevedibili
+- Attacchi lenti e prevedibili come un boss normale
 
 ### Fase 2
 
 - Difficoltà intermedia
 - Attacchi più rapidi
+- Raffica di tre colpi
 
 ### Fase 3
 
 - Fase finale e più difficile
-- Boss più veloce e aggressivo
+- Attacchi più rapidi
+- Raffica di 8 colpi
 
 Per completare il gioco il giocatore deve sopravvivere e sconfiggere il boss finale.
 
