@@ -64,8 +64,7 @@ Entrambi i personaggi hanno le stesse abilità e caratteristiche di gioco.
 | W | Saltare |
 | A | Muoversi a sinistra |
 | D | Muoversi a destra |
-
-Il giocatore può inoltre sparare ai nemici durante il gioco.
+| Mouse SX | Attacco |
 
 ---
 
