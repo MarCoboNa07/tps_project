@@ -45,11 +45,11 @@ All’inizio della partita il giocatore può scegliere tra due personaggi.
 
 ## Personaggio 1: Marco Bona
 
-Personaggio principale selezionabile dal giocatore.
+Primo personaggio selezionabile dal giocatore.
 
 ## Personaggio 2: Capo Maury's
 
-Secondo personaggio giocabile disponibile.
+Secondo personaggio selezionabile dal giocatore.
 
 Entrambi i personaggi hanno le stesse abilità e caratteristiche di gioco.
 
