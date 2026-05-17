@@ -168,7 +168,8 @@ if (is_dead) {
     }
 
     if (death_timer <= 0) {
-		room_goto(rm_menu);
+		global.end_game_result = "victory";
+		room_goto(rm_end_game);
         instance_destroy();
     }
     exit;

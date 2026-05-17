@@ -5,6 +5,11 @@ if (!instance_exists(_player)) {
 	exit;
 }
 
+// verifica se la transizione livello è attiva
+if (instance_exists(obj_transition_controller) && obj_transition_controller.transition_active) {
+    exit;
+}
+
 // vita
 var _lives = _player.n_lives;
 var _max_lives = 3;

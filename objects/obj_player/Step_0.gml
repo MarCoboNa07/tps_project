@@ -24,7 +24,8 @@ if (is_dead) {
 
     if (death_timer <= 0) {
         global.player_lives = 3;
-        room_goto(rm_menu);
+		global.end_game_result = "defeat";
+        room_goto(rm_end_game);
     }
     exit;
 }
@@ -189,6 +190,7 @@ if (_enemy_type_1 != noone && !_enemy_type_1.is_dead) {
             sprite_index = death_spr;
 			image_index = 0;
 			image_speed = 1;
+			exit;
         }
     }
 }
@@ -215,9 +217,17 @@ if (_enemy_type_2 != noone && !_enemy_type_2.is_dead) {
 
         // morte
         if (n_lives <= 0) {
-            sprite_index = death_spr;
-			room_goto(rm_menu);
-        }
+			is_dead = true;
+			death_timer = room_speed * 2;
+
+			x_speed = 0;
+			y_speed = 0;
+
+			sprite_index = death_spr;
+			image_index = 0;
+			image_speed = 1;
+			exit;
+		}
     }
 }
 
@@ -235,9 +245,45 @@ if (_boss != noone && !_boss.is_dead) {
 
         // morte
         if (n_lives <= 0) {
-            sprite_index = death_spr;
-			room_goto(rm_menu);
-        }
+			is_dead = true;
+			death_timer = room_speed * 2;
+
+			x_speed = 0;
+			y_speed = 0;
+
+			sprite_index = death_spr;
+			image_index = 0;
+			image_speed = 1;
+			exit;
+		}
+	}
+}
+
+// collisione boss diritta
+var _boss_diritta = instance_place(x, y + 1, obj_boss_diritta);
+
+if (_boss_diritta != noone && !_boss_diritta.is_dead) {
+	if (!invulnerable) { // subisce danno
+		n_lives -= 1;
+        invulnerable = true;
+        invulnerable_time = room_speed * 2;
+
+		is_damaged = true;
+		damage_time = room_speed * 0.5;
+
+        // morte
+        if (n_lives <= 0) {
+			is_dead = true;
+			death_timer = room_speed * 2;
+
+			x_speed = 0;
+			y_speed = 0;
+
+			sprite_index = death_spr;
+			image_index = 0;
+			image_speed = 1;
+			exit;
+		}
 	}
 }
 

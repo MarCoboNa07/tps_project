@@ -3,8 +3,8 @@ if (room == rm_level_1) {
 	sprite_index = spr_set_squares;
 	mask_index = spr_set_squares;
 } else if (room == rm_level_2) {
-	sprite_index = spr_set_squares;
-	mask_index = spr_set_squares;
+	sprite_index = spr_numbers;
+	mask_index = spr_numbers;
 } else if (room == rm_level_3) {
 	sprite_index = spr_book;
 	mask_index = spr_book;

@@ -48,7 +48,7 @@ if (_player != noone) {
         if (_player.n_lives <= 0) {
             _player.sprite_index = _player.death_spr;
 			global.player_lives = 3;
-            room_goto(rm_menu);
+            room_goto(rm_end_game);
         }
     }
 
